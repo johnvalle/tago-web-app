@@ -1,4 +1,8 @@
-import React from 'react';
-import ReactDom from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDom.render(<h1>Tago Web App</h1>, document.getElementById('app'))
+const App = () => {
+  return <h1>Hello Word</h1>
+}
+
+ReactDOM.render(<App />, document.getElementById('app'))

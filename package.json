@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/johnvalle/tago-web-app/issues"
   },
-  "homepage": "https://github.com/johnvalle/tago-web-app#readme"
+  "homepage": "https://github.com/johnvalle/tago-web-app#readme",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  }
 }

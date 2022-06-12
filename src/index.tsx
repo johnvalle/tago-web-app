@@ -1,10 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
 
-import * as Pages from '@/pages';
+import AppRouter from './AppRouter';
+import { Theme } from '@/constants';
 
-const App = () => {
-  return <App />;
-};
+function App() {
+  return (
+    <MantineProvider theme={Theme} withGlobalStyles withNormalizeCSS>
+      <NotificationsProvider>
+        <AppRouter />
+      </NotificationsProvider>
+    </MantineProvider>
+  );
+}
 
 ReactDOM.render(<App />, document.getElementById('app'));

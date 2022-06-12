@@ -9,7 +9,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@': path.resolve(__dirname, 'src'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },
@@ -50,6 +50,11 @@ module.exports = {
         use: ['file-loader'],
       },
     ],
+  },
+  devServer: {
+    compress: true,
+    port: 3000,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

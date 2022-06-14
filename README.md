@@ -1,5 +1,6 @@
 # Tago
 [![Netlify Status](https://api.netlify.com/api/v1/badges/85348c64-1d81-4ec9-988d-7d2600f8b504/deploy-status)](https://app.netlify.com/sites/sunny-pegasus-52d942/deploys)
+
 [View Demo](https://main--sunny-pegasus-52d942.netlify.app/)
 
 #### Installation
@@ -34,8 +35,13 @@ Tago is an alternative app for storing secured information without having to wor
 #### Timeline
 
 [x] Creating, reading, and updating of sensitive information
+
 [x] Encryption of sensitive information using user added pin
+
 [x] Adding categories to classify added items
+
 [-] Option to add multiple pins
+
 [-] Sorting and filtering by categories
-[-] Importign and exporting of added information
+
+[-] Importing and exporting of added information

@@ -11,7 +11,7 @@ export class TagoDatabase extends Dexie {
   constructor() {
     super('TagoDatabase');
     this.version(1).stores({
-      securedItems: '++id, name, encryptedValue, dateCreated, isEncrypted',
+      securedItems: '++id, name, encryptedValue, dateCreated, isEncrypted, category',
       category: '++id, name, dateCreated',
     });
   }

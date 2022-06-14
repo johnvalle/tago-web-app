@@ -9,11 +9,14 @@ import { TAGO_PIN } from '@/constants/vars';
 
 export function UpdatePin() {
   const [pin, setPin] = useLocalStorage({ key: TAGO_PIN, defaultValue: '' });
-  const { handleSubmit, control } = useForm<UpdatePinFormData>({
+  const { reset, handleSubmit, control, formState } = useForm<UpdatePinFormData>({
     defaultValues: { pin },
   });
 
-  const updatePin = (data: UpdatePinFormData) => setPin(data.pin);
+  const updatePin = (data: UpdatePinFormData) => {
+    setPin(data.pin);
+    reset({ pin: data.pin });
+  };
 
   return (
     <Container size={360} sx={{ width: '100%' }} p={0} m={0}>
@@ -33,8 +36,8 @@ export function UpdatePin() {
             <PasswordInput
               placeholder="Enter pin"
               label="Encryption pin"
-              maxLength={8}
-              description="The encryption pin is used to encrypt or hide the items you add your list."
+              maxLength={30}
+              description="The encryption pin is used to encrypt or hide the items you add to your list."
               value={value}
               onChange={onChange}
               error={error?.message}
@@ -44,7 +47,9 @@ export function UpdatePin() {
         />
       </Stack>
       <Space h="md" />
-      <Button onClick={handleSubmit(updatePin)}>Update</Button>
+      <Button onClick={handleSubmit(updatePin)} disabled={!formState.isDirty}>
+        Update
+      </Button>
     </Container>
   );
 }

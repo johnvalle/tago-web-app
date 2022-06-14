@@ -41,6 +41,7 @@ export default function AddItemModal({ isModalOpen, setIsModalOpen }: Props) {
         : data.encryptedValue,
       dateCreated: new Date().toUTCString(),
       isEncrypted: Boolean(data.isEncrypted),
+      category: data.category,
     });
     resetStates();
   };

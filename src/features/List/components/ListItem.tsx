@@ -1,13 +1,12 @@
 import React from 'react';
 import { AES } from 'crypto-js';
 import UTF8 from 'crypto-js/enc-utf8';
-import { Divider, Group, Menu, Paper, Stack, Text, ThemeIcon, Tooltip } from '@mantine/core';
+import { Badge, Divider, Group, Menu, Paper, Stack, Text, ThemeIcon, Tooltip } from '@mantine/core';
 import { useClipboard, useLocalStorageValue } from '@mantine/hooks';
 import { ClipboardCheck, Copy, Help, Lock, LockOpen, Pencil, Trash } from 'tabler-icons-react';
 import { showNotification } from '@mantine/notifications';
 
 import { ISecuredItem } from '@/database/models/SecuredItem/types';
-import { SecuredItem } from '@/database/models/SecuredItem';
 import { formatDate, pipe, truncate } from '@/utils';
 import { TAGO_PIN } from '@/constants/vars';
 
@@ -38,6 +37,12 @@ export default function ListItem({ item }: Props) {
       icon: <ClipboardCheck />,
     });
   };
+
+  const getIcon = (isEncrypted: boolean) => (
+    <ThemeIcon radius="lg" variant="light" color={isEncrypted ? 'green' : 'red'}>
+      {isEncrypted ? <Lock size={12} /> : <LockOpen size={12} />}
+    </ThemeIcon>
+  );
   return (
     <Paper key={item.id} shadow="xs" p="sm">
       <EditItemModal securedItem={item} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
@@ -48,10 +53,7 @@ export default function ListItem({ item }: Props) {
       />
       <Group position="apart">
         <Group>
-          <ThemeIcon radius="lg" variant="light" color={item.isEncrypted ? 'green' : 'red'}>
-            {item.isEncrypted ? <Lock size={16} /> : <LockOpen size={16} />}
-          </ThemeIcon>
-          <Stack spacing={0}>
+          <Stack spacing={0} align="flex-start">
             <Text weight={700}>{item.name}</Text>
             <Group spacing="xs">
               <Text size="sm" color="black">
@@ -73,6 +75,16 @@ export default function ListItem({ item }: Props) {
             <Text size="xs" color="dimmed">
               {formatDate(item.dateCreated)}
             </Text>
+            <Group spacing="xs" mt="md">
+              <Badge
+                sx={{ paddingLeft: 0, marginRight: 0 }}
+                color={item.isEncrypted ? 'green' : 'red'}
+                leftSection={getIcon(item.isEncrypted)}
+              >
+                {item.isEncrypted ? 'Encrypted' : 'Unsafe'}
+              </Badge>
+              <Badge color="gray">{item.category ?? 'General'}</Badge>
+            </Group>
           </Stack>
         </Group>
         <Menu>

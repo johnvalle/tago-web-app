@@ -22,6 +22,7 @@ module.exports = {
     'operator-linebreak': 'off',
     'implicit-arrow-linebreak': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'no-confusing-arrow': ['error', { allowParens: true, onlyOneSimpleParam: true }],
 
     // Unnecessary
     'react/jsx-one-expression-per-line': 'off',

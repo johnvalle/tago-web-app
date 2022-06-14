@@ -4,4 +4,5 @@ export interface ISecuredItem {
   encryptedValue: string;
   isEncrypted: boolean;
   dateCreated: string;
+  category?: string;
 }

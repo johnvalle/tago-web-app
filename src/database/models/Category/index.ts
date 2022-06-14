@@ -2,18 +2,16 @@ import { AppDB } from '../..';
 
 import { ICategory } from './types';
 
-export class Category {
-  public static table = AppDB.category;
+export const Category = (() => {
+  const table = AppDB.category;
 
-  static add(data: ICategory) {
-    return this.table.add(data);
-  }
+  const add = (data: ICategory) => table.add(data);
+  const remove = (id: any) => table.delete(id);
+  const getAll = () => table.toArray();
 
-  static delete(id: any) {
-    return this.table.delete(id);
-  }
-
-  static getAll() {
-    return this.table.toArray();
-  }
-}
+  return {
+    add,
+    remove,
+    getAll,
+  };
+})();

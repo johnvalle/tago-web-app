@@ -7,10 +7,10 @@ import { useLocalStorageValue } from '@mantine/hooks';
 
 import { SecuredItem } from '@/database/models/SecuredItem';
 import { ISecuredItem } from '@/database/models/SecuredItem/types';
+import { TAGO_PIN } from '@/constants/vars';
 
 import { SecuredItemFormData } from '../types';
 import ItemForm from './ItemForm';
-import { TAGO_PIN } from '@/constants/vars';
 
 interface Props {
   securedItem: ISecuredItem;
@@ -27,6 +27,7 @@ export default function EditItemModal({ securedItem, isModalOpen, setIsModalOpen
         ? UTF8.stringify(AES.decrypt(securedItem.encryptedValue, pin))
         : securedItem.encryptedValue,
       isEncrypted: securedItem.isEncrypted,
+      category: securedItem.category,
     },
   });
 
@@ -42,6 +43,7 @@ export default function EditItemModal({ securedItem, isModalOpen, setIsModalOpen
         ? AES.encrypt(data.encryptedValue, pin).toString()
         : data.encryptedValue,
       isEncrypted: data.isEncrypted,
+      category: data.category,
     });
 
     updateForm({ securedItem, ...data } as ISecuredItem);

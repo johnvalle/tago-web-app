@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Group, Modal, Stack, Text, Title } from '@mantine/core';
-import { SecuredItem } from '@/database/models/SecuredItem';
 
+import { SecuredItem } from '@/database/models/SecuredItem';
 import { ISecuredItem } from '@/database/models/SecuredItem/types';
 
 interface Props {
@@ -11,13 +11,8 @@ interface Props {
 }
 
 export default function DeleteItemModal({ securedItem, isModalOpen, setIsModalOpen }: Props) {
-  const handleRemove = () => {
-    SecuredItem.delete(securedItem.id);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
+  const handleRemove: () => void = () => SecuredItem.remove(securedItem.id);
+  const handleModalClose: () => void = () => setIsModalOpen(!isModalOpen);
 
   return (
     <Modal opened={isModalOpen} onClose={handleModalClose} title="Delete item">

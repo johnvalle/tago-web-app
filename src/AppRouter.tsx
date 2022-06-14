@@ -1,14 +1,29 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ROUTES } from '@/constants/vars';
+
 import * as Feat from '@/features';
+
+export const ROUTES = [
+  {
+    name: 'My List',
+    path: '/list',
+    element: <Feat.List />,
+  },
+  {
+    name: 'Settings',
+    path: '/settings',
+    element: <Feat.Settings />,
+  },
+];
 
 function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={ROUTES.LIST} element={<Feat.List />} />
-        <Route path={ROUTES.SETTINGS} element={<Feat.Settings />} />
+        {ROUTES.map((route) => (
+          <Route key={nanoid()} {...route} />
+        ))}
       </Routes>
     </BrowserRouter>
   );

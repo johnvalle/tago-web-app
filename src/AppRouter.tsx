@@ -7,8 +7,9 @@ import * as Feat from '@/features';
 export const ROUTES = [
   {
     name: 'My List',
-    path: '/list',
+    path: '/',
     element: <Feat.List />,
+    index: true,
   },
   {
     name: 'Settings',

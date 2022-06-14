@@ -58,7 +58,7 @@ export default function CategoryList() {
       <Group>
         {list?.map((item) => (
           <Badge
-            color="orange"
+            color="violet"
             variant="outline"
             radius="sm"
             size="lg"

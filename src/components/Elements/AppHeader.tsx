@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
 import { Anchor, Group, Header, Stack, Title, useMantineTheme } from '@mantine/core';
 import { ROUTES } from '@/AppRouter';
@@ -18,6 +19,7 @@ export function AppHeader() {
           <Group spacing="md">
             {ROUTES.map((route) => (
               <Anchor
+                key={nanoid()}
                 component={Link}
                 to={route.path}
                 sx={

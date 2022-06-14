@@ -49,8 +49,13 @@ export default function EditItemModal({ securedItem, isModalOpen, setIsModalOpen
     updateForm({ securedItem, ...data } as ISecuredItem);
   };
 
+  const resetState = () => {
+    formMethods.reset();
+    setIsModalOpen(false);
+  };
+
   return (
-    <Modal opened={isModalOpen} onClose={() => setIsModalOpen(false)} title="Edit item">
+    <Modal opened={isModalOpen} onClose={resetState} title="Edit item">
       <Stack>
         <FormProvider {...formMethods}>
           <ItemForm />

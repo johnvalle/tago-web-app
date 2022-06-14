@@ -29,7 +29,11 @@ export default function ListItem({ item }: Props) {
   const copyDecrypt = () => pipe<string>([handleDecrypt, clipboard.copy])(item.encryptedValue);
 
   const copyToClipboard = () => {
-    copyDecrypt();
+    if (item.isEncrypted) {
+      copyDecrypt();
+    } else {
+      clipboard.copy(item.encryptedValue);
+    }
     showNotification({
       title: 'Copied!',
       message: `${item.name} is copied to clipboard`,

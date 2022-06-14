@@ -20,7 +20,7 @@ export default function AddCategory() {
       name: data.name,
       dateCreated: new Date().toUTCString(),
     });
-    reset();
+    reset({ name: '' });
   };
 
   return (

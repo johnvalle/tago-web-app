@@ -59,7 +59,7 @@ export default function ItemForm() {
           />
         )}
       />
-      {categoryList && (
+      {categoryList?.length ? (
         <Controller
           name="category"
           control={control}
@@ -73,7 +73,7 @@ export default function ItemForm() {
             </InputWrapper>
           )}
         />
-      )}
+      ) : null}
       <Divider variant="dashed" />
       <Controller
         name="isEncrypted"

@@ -13,7 +13,7 @@ git clone git@github.com:johnvalle/tago-web-app.git
 ```bash
 cd tago-web-app
 npm install
-npm run
+npm run dev
 ```
 
 ####

@@ -6,9 +6,12 @@ import { SecuredItem } from '@/database/models/SecuredItem';
 import Empty from '@/components/Elements/Empty';
 
 import ListItem from './ListItem';
+import useResponsiveness from '@/hooks/useResponsiveness';
 
 export function EncryptedList() {
   const list = useLiveQuery(() => SecuredItem.getAll());
+
+  const isSmallScreen = useResponsiveness('sm');
 
   return (
     <Stack>
@@ -19,7 +22,7 @@ export function EncryptedList() {
         />
       )}
       {list && (
-        <SimpleGrid cols={2}>
+        <SimpleGrid cols={isSmallScreen ? 1 : 2}>
           {list.map((item) => (
             <ListItem item={item} key={item.id} />
           ))}

@@ -34,7 +34,6 @@ export default function CategoryList() {
   );
 
   React.useEffect(() => {
-    console.log(usedCategories(), categoryToRemove);
     if (categoryToRemove) {
       if (usedCategories().includes(categoryToRemove.name)) {
         showNotification({

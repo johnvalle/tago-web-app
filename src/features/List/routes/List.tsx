@@ -27,12 +27,13 @@ export function List() {
           title: 'My List',
           children: (
             <Popover
+              data-testid="pinRequiredDialog"
               opened={isPopoverOpen}
               onClose={() => setIsPopoverOpen(false)}
               withArrow
               position="bottom"
               width={300}
-              target={<Button onClick={handleAddItem}>Add item</Button>}
+              target={<Button data-testid="addItemBtn" onClick={handleAddItem}>Add item</Button>}
             >
               <Stack>
                 <Stack spacing={0}>
@@ -49,7 +50,7 @@ export function List() {
           ),
         }}
       >
-        <AddItemModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <AddItemModal data-testid="addItemModal" isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
         <EncryptedList />
       </ContentLayout>
     </MainLayout>
